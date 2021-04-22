@@ -6,7 +6,7 @@ class AddForm extends React.Component {
   render() {
     return (
       <Form data-test='component-form' >
-        <Row form className='p-3' >
+        <Row form>
           <Col md={12} >
             <h3 data-test="title-form" >Add your tasks</h3>
           </Col>
