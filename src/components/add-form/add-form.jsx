@@ -1,13 +1,28 @@
-import React, { Component } from 'react'
+import React from 'react';
+import { Col, Row, Button, Form, FormGroup, Input } from 'reactstrap';
 
-class AddForm extends Component {
+class AddForm extends React.Component {
+
   render() {
     return (
-      <div data-test='component-add-form' >
-        
-      </div>
-    )
+      <Form data-test='component-form' >
+        <Row form className='p-3' >
+          <Col md={12} >
+            <h3 data-test="title-form" >Add your tasks</h3>
+          </Col>
+          <Col md={8}>
+            <FormGroup>
+              <Input data-test='input-form' type="text" name="text" placeholder="new todo..." />
+            </FormGroup>
+          </Col>
+          <Col md={3}>
+            <Button data-test='button-form' color="primary" >Add New</Button>
+          </Col>
+        </Row>
+      </Form>
+    );
   }
+
 }
 
-export default AddForm
+export default AddForm;
