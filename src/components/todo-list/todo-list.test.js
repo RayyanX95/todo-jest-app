@@ -1,17 +1,38 @@
-import Enzyme, {shallow} from 'enzyme';
+import Enzyme, { shallow } from 'enzyme';
 import EnzymeAdapter from '@wojtekmaj/enzyme-adapter-react-17';
-import {findByTestAttr} from '../../../test/testUtils';
+import { findByTestAttr } from '../../../test/testUtils';
 import ToDoList from './todo-list';
 
+Enzyme.configure({ adapter: new EnzymeAdapter() });
 
-Enzyme.configure({adapter: new EnzymeAdapter()});
-const setup = () => shallow(<ToDoList />);
+const initProps = {
+  todoList: []
+}
+
+const setup = (props = {}) => {
+  const setupProps = {
+    ...initProps,
+    ...props,
+  }
+  return shallow(<ToDoList {...setupProps} />)
+};
 
 test('renders todo list without error', () => {
   const wrapper = setup();
   const app = findByTestAttr(wrapper, 'component-todo-list');
   expect(app.exists()).toBeTruthy();
 });
+
+test('show "No tasks message" when list is empty', () => {
+    const wrapper = setup();
+    const emptyMsg = findByTestAttr(wrapper, 'empty-message');
+    expect(emptyMsg.exists()).toBeTruthy();
+});
+
+test('show list element when list is not empty', () => {
+  const wrapper = setup({todoList: [{value: "value-test", id: 'test-id'}]});
+
+})
 
 test('renders todo list at start has length of "0"', () => {
   const wrapper = setup();
