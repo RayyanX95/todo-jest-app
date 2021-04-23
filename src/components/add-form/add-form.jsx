@@ -2,7 +2,6 @@ import React from 'react';
 import { Col, Row, Button, Form, FormGroup, Input } from 'reactstrap';
 
 class AddForm extends React.Component {
-
   render() {
     return (
       <Form data-test='component-form' >
@@ -16,7 +15,10 @@ class AddForm extends React.Component {
             </FormGroup>
           </Col>
           <Col md={3}>
-            <Button data-test='button-form' color="primary" >Add New</Button>
+            <Button
+              data-test='button-form'
+              color="primary"
+              onClick={this.props?.addHandler}>Add New</Button>
           </Col>
         </Row>
       </Form>
