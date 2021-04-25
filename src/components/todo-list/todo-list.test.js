@@ -17,21 +17,28 @@ const setup = (props = {}) => {
   return shallow(<ToDoList {...setupProps} />)
 };
 
-test('renders todo list without error', () => {
+test('renders without error', () => {
   const wrapper = setup();
   const app = findByTestAttr(wrapper, 'component-todo-list');
   expect(app.exists()).toBeTruthy();
 });
 
+test('render title without error', () => {
+  const wrapper = setup();
+  const title = findByTestAttr(wrapper, 'list-title');
+  expect(title.text().length).not.toBe(0);
+})
+
 test('show "No tasks message" when list is empty', () => {
-    const wrapper = setup();
-    const emptyMsg = findByTestAttr(wrapper, 'empty-message');
-    expect(emptyMsg.exists()).toBeTruthy();
+  const wrapper = setup();
+  const emptyMsg = findByTestAttr(wrapper, 'empty-message');
+  expect(emptyMsg.exists()).toBeTruthy();
 });
 
 test('show list element when list is not empty', () => {
-  const wrapper = setup({todoList: [{value: "value-test", id: 'test-id'}]});
-
+  const wrapper = setup({ todoList: [{ value: "value-test", id: 'test-id' }] });
+  const emptyMsg = findByTestAttr(wrapper, 'todo-list');
+  expect(emptyMsg.exists()).toBeTruthy();
 })
 
 test('renders todo list at start has length of "0"', () => {

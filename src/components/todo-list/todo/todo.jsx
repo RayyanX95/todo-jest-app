@@ -15,8 +15,7 @@ const GreenCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
-const Todo = (props) => {
-  const arr = [0];
+const Todo = ({todo}) => {
   const [state, setState] = React.useState({
     checkedG: false,
   });
@@ -29,7 +28,7 @@ const Todo = (props) => {
     <Col md={12}
       data-test='component-todo'
       className='m-0'
-      key={props.todo?.id} >
+      key={todo?.id} >
       <Row
         data-test='element-todo'
         className='align-items-center'
@@ -39,7 +38,7 @@ const Todo = (props) => {
           control={<GreenCheckbox checked={state.checkedG} onChange={handleChange} name="checkedG" />}
           label=''
         />
-        <Label>{`Element ${props.todo?.value}`}</Label>
+        <Label>{`Element ${todo?.value}`}</Label>
       </Row>
     </Col>
   )
