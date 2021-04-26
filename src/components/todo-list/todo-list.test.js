@@ -43,13 +43,21 @@ describe('if there is no todo in the list', () => {
     const emptyMsg = findByTestAttr(wrapper, 'empty-message');
     expect(emptyMsg.exists()).toBeTruthy();
   });
-})
+});
 
-
-test('show list element when list is not empty', () => {
-  const wrapper = setup({ todoList: [{ value: "value-test", id: 'test-id' }] });
-  const emptyMsg = findByTestAttr(wrapper, 'todo-list');
-  expect(emptyMsg.exists()).toBeTruthy();
+describe('if there are todo items', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = setup({ todoList: [{ value: "value-test", id: 'test-id' }]});
+  });
+  test('renders without error', () => {
+    const app = findByTestAttr(wrapper, 'component-todo-list');
+    expect(app.exists()).toBeTruthy();
+  });
+  test('show list element when list is not empty', () => {
+    const emptyMsg = findByTestAttr(wrapper, 'todo-list');
+    expect(emptyMsg.exists()).toBeTruthy();
+  })
 })
 
 test('renders todo list at start has length of "0"', () => {
