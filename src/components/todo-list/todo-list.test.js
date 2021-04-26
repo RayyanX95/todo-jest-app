@@ -1,17 +1,18 @@
 import Enzyme, { shallow } from 'enzyme';
 import EnzymeAdapter from '@wojtekmaj/enzyme-adapter-react-17';
-import { findByTestAttr } from '../../../test/testUtils';
+
+import { findByTestAttr, checkProps } from '../../../test/testUtils';
 import ToDoList from './todo-list';
 
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
-const initProps = {
+const defaultProps = {
   todoList: []
 }
 
 const setup = (props = {}) => {
   const setupProps = {
-    ...initProps,
+    ...defaultProps,
     ...props,
   }
   return shallow(<ToDoList {...setupProps} />)
@@ -47,17 +48,10 @@ test('renders todo list at start has length of "0"', () => {
   expect(todoList.children()).toHaveLength(0);
 });
 
-// test('clicking on button adds new Todo', () => {
-//   const buttonSetup = () => shallow(<AddForm />);
-//   // find the button 
-//   const addButton = findByTestAttr(buttonSetup(), 'button-form');
-//   console.log(addButton.debug());
-//   // simulate click event
-//   addButton.simulate('click');
-//   // find Todo list
-//   const wrapper = setup();
-//   const todoList = findByTestAttr(wrapper, 'todo-list');
-//   // console.log(todoList.debug());
+test('Throw error when wrong prop types', () => {
+  // const expectedProps = {todoList: []};
+  // const propError = checkPropTypes(ToDoList.propTypes, { todoList: [] }, 'prop', ToDoList.name);
+  // expect(propError).toBeUndefined();
 
-//   expect(todoList.children()).toHaveLength(1);
-// })
+  checkProps(ToDoList, defaultProps);
+});
