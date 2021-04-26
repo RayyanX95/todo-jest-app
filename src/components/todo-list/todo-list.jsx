@@ -12,9 +12,9 @@ const ToDoList = ({ todoList }) => {
       <Row className="m-0" >
         <h3 data-test='list-title'>Your Tasks</h3>
       </Row>
-      {!!todoList.length && <Row data-test='todo-list' key={Math.random()} className="w-100 m-0">
+      {!!todoList.length && <Row  key={Math.random()} className="w-100 m-0">
         {todoList?.map(todo => (
-          <ToDo key={todo.id} todo={todo} />
+          <ToDo data-test='todo-item' key={todo.id} todo={todo} />
         ))}
       </Row>}
       {!todoList?.length && <Col md={12}
