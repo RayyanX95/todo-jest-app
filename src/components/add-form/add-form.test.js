@@ -1,4 +1,5 @@
 import { shallow } from 'enzyme';
+import React from 'react';
 import { findByTestAttr } from '../../../test/testUtils';
 import AddForm from './add-form';
 
@@ -10,11 +11,6 @@ describe('render without errors', () => {
     const AddForm = findByTestAttr(wrapper, 'component-form');
     expect(AddForm.length).toBe(1);
   });
-  // test('render title without error', () => {
-  //   const wrapper = setup();
-  //   const title = findByTestAttr(wrapper, 'title-form');
-  //   expect(title.exists()).toBe(true);
-  // });
   test('render input without error', () => {
     const wrapper = setup();
     const input = findByTestAttr(wrapper, 'input-form');
@@ -25,4 +21,19 @@ describe('render without errors', () => {
     const button = findByTestAttr(wrapper, 'button-form');
     expect(button.exists()).toBe(true);
   });
+});
+
+describe('state controlled input field', () => {
+  test('state updates with value of input box upon change', () => {
+    const mockSetTodo = jest.fn();
+    React.useState = jest.fn(() => ['', mockSetTodo]);
+
+    const wrapper = setup();
+    const input = findByTestAttr(wrapper, 'input-form');
+
+    const mockEvent = {target: {value: 'New Todo'}};
+    input.simulate('change', mockEvent);
+
+    expect(mockSetTodo).toBeCalledWith('New Todo')
+  })
 })

@@ -2,6 +2,8 @@ import React from 'react';
 import { Col, Row, Button, Form, FormGroup, Input } from 'reactstrap';
 
 const AddForm = ({ addHandler }) => {
+  // const [todo, setTodo]
+  const [todo, setTodo] = React.useState('')
   return (
     <Form data-test='component-form' >
       <Row form>
@@ -10,7 +12,13 @@ const AddForm = ({ addHandler }) => {
         </Col>
         <Col md={8}>
           <FormGroup>
-            <Input data-test='input-form' type="text" name="text" placeholder="new todo..." />
+            <Input
+              data-test='input-form'
+              type="text" name="text"
+              placeholder="new todo..."
+              value={todo}
+              onChange={e => setTodo(e.target.value)}
+            />
           </FormGroup>
         </Col>
         <Col md={3}>
