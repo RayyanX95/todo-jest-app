@@ -16,19 +16,19 @@ const GreenCheckbox = withStyles({
 })((props) => <Checkbox color="default" {...props} />);
 
 const Todo = ({todo, removeTodoHandler}) => {
-  const [state, setState] = React.useState({
-    checkedG: false,
-  });
+  const [state, setState] = React.useState({checkedG: false});
+  const [labelText, setLabelText] = React.useState('');
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
+  let labelData = <label data-test='label-text' >{labelText}</label>
 
   return (
-    <Col md={12}
+    <Row 
       data-test='component-todo'
       className='m-0'
-      onClick={() => removeTodoHandler(todo?.id)} >
+      onClick={() => setLabelText('clicked!')} >
       <Row
         data-test='element-todo'
         className='align-items-center'
@@ -39,8 +39,9 @@ const Todo = ({todo, removeTodoHandler}) => {
           label=''
         />
         <Label>{`Element ${todo?.value}`}</Label>
+        {labelData}
       </Row>
-    </Col>
+    </Row>
   )
 }
 

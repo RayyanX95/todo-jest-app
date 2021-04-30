@@ -1,10 +1,8 @@
-import Enzyme, { shallow } from 'enzyme';
-import EnzymeAdapter from '@wojtekmaj/enzyme-adapter-react-17';
+import { shallow } from 'enzyme';
 
 import { findByTestAttr, checkProps } from '../../../test/testUtils';
 import ToDoList from './todo-list';
-
-Enzyme.configure({ adapter: new EnzymeAdapter() });
+import ToDo from './todo/todo';
 
 const defaultProps = {
   todoList: []
@@ -20,8 +18,8 @@ const setup = (props = {}) => {
 
 test('renders without error', () => {
   const wrapper = setup();
-  const app = findByTestAttr(wrapper, 'component-todo-list');
-  expect(app.exists()).toBeTruthy();
+  const todoList = findByTestAttr(wrapper, 'component-todo-list');
+  expect(todoList.exists()).toBeTruthy();
 });
 
 test('render title without error', () => {
