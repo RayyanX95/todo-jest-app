@@ -47,14 +47,13 @@ describe('if there is no todo in the list', () => {
 
 describe('if there are todo items', () => {
   let wrapper;
+  const todoList = [
+    { value: "value-test", id: 'test-id-1' },
+    { value: "value-test", id: 'test-id-2' },
+    { value: "value-test", id: 'test-id-3' },
+  ]
   beforeEach(() => {
-    wrapper = setup({
-      todoList: [
-        { value: "value-test", id: 'test-id-1' },
-        { value: "value-test", id: 'test-id-2' },
-        { value: "value-test", id: 'test-id-3' },
-      ]
-    });
+    wrapper = setup({ todoList });
   });
   test('renders without error', () => {
     const app = findByTestAttr(wrapper, 'component-todo-list');
@@ -63,7 +62,7 @@ describe('if there are todo items', () => {
   test('show list element when list is not empty', () => {
     const todoItem = findByTestAttr(wrapper, 'todo-item');
     expect(todoItem.length).toBe(3);
-  })
+  });
 })
 
 test('renders todo list at start has length of "0"', () => {

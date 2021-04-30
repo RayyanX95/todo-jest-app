@@ -15,7 +15,7 @@ const GreenCheckbox = withStyles({
   checked: {},
 })((props) => <Checkbox color="default" {...props} />);
 
-const Todo = ({todo}) => {
+const Todo = ({todo, removeTodoHandler}) => {
   const [state, setState] = React.useState({
     checkedG: false,
   });
@@ -28,7 +28,7 @@ const Todo = ({todo}) => {
     <Col md={12}
       data-test='component-todo'
       className='m-0'
-      key={todo?.id} >
+      onClick={() => removeTodoHandler(todo?.id)} >
       <Row
         data-test='element-todo'
         className='align-items-center'

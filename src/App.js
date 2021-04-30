@@ -18,12 +18,16 @@ class App extends Component {
     todoList.push(todo);
     this.setState({ todoList });
   }
+  removeTodoHandler = (id) => {
+    const todoList = this.state.todoList.filter(todo => todo.id != id);
+    this.setState({ todoList });
+  }
 
   render() {
     return (
       <div data-test='component-app' className="App">
-        <AddForm addHandler={this.addTodoHandler} />
-        <ToDoList todoList={this.state.todoList} />
+        <AddForm addHandler={this.addTodoHandler}  />
+        <ToDoList todoList={this.state.todoList} removeTodoHandler={this.removeTodoHandler}/>
       </div>
     );
   }
