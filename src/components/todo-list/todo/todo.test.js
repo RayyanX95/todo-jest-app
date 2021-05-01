@@ -1,4 +1,5 @@
 import { shallow } from 'enzyme';
+import React from 'react';
 import { findByTestAttr } from '../../../../test/testUtils';
 import ToDo from './todo';
 
@@ -11,12 +12,15 @@ test('renders todo without error', () => {
 });
 
 test('check change upon change', () => {
+  const mockSetLabelText = jest.fn();
+  const useStateMockValues = jest.fn(() => ['', mockSetLabelText]);
+  React.useState = useStateMockValues
   const wrapper = setup();
   const todoComponent = findByTestAttr(wrapper, 'component-todo');
   
-  todoComponent.simulate('click');
+  // todoComponent.simulate('click');
+  todoComponent.props().onClick();
   const labelText = findByTestAttr(wrapper, 'label-text');
-  console.log("__> : ", labelText.text())
 
-  expect(labelText.text().length).not.toBe(0);
+  expect(mockSetLabelText).toHaveBeenCalledWith('clicked!');
 })
