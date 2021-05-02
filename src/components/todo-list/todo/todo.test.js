@@ -42,12 +42,3 @@ test('test basics mock functions ', () => {
   //  return value of the second call to the function was 42
   expect(mockCallback.mock.results[1].value).toBe(25);
 });
-test('test return value of mock functions', () => {
-  const filterTestFn  = jest.fn();
-  console.log(filterTestFn ()); // undefined
-
-  filterTestFn.mockReturnValueOnce(false).mockReturnValueOnce(true);
-
-  const result  = [11,99].filter(num => filterTestFn (num));
-  console.log("> ", result); // > [99]
-})
