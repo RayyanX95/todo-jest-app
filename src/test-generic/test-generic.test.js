@@ -1,3 +1,6 @@
+import axios from 'axios';
+import Users from './users';
+
 test('test basics mock functions ', () => {
   function forEach(items, callback) {
     for (let index = 0; index < items.length; index++) {
@@ -24,4 +27,8 @@ test('test return value of mock functions', () => {
 
   const result  = [11,99].filter(num => filterTestFn (num));
   console.log("> ", result); // > [99]
+});
+
+test('mock axios module', () => {
+  
 })
