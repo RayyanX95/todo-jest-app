@@ -19,8 +19,7 @@ test('check change upon change', () => {
   const todoComponent = findByTestAttr(wrapper, 'component-todo');
   
   // todoComponent.simulate('click');
-  todoComponent.props().onClick();
-  const labelText = findByTestAttr(wrapper, 'label-text');
+  todoComponent.props().onClick({value: 'click event value'});
 
-  expect(mockSetLabelText).toHaveBeenCalledWith('clicked!');
+  expect(mockSetLabelText).toHaveBeenCalledWith('click event value');
 })
