@@ -13,7 +13,7 @@ const AddForm = ({ addHandler }) => {
         </Col>
         <Col md={8}>
           <FormGroup>
-            <Input
+            <input
               data-test='input-form'
               type="text" name="text"
               placeholder="new todo..."
@@ -23,14 +23,14 @@ const AddForm = ({ addHandler }) => {
           </FormGroup>
         </Col>
         <Col md={3}>
-          <Button
+          <button
             data-test='button-form'
             color="primary"
-            onClick={addHandler}>Add New</Button>
+            onClick={() => setListTest([...testList, "test"])}>Add New</button>
         </Col>
       </Row>
       {testList.map(test => (
-        <p data-test='test-list' >{test}</p>
+        <p data-test='test-list' key={Math.random()} >{test}</p>
       ))}
     </Form>
   );
