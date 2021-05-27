@@ -1,14 +1,41 @@
-import Enzyme, {shallow} from 'enzyme';
-import EnzymeAdapter from '@wojtekmaj/enzyme-adapter-react-17';
-import {findByTestAttr} from '../test/testUtils';
+import { mount } from 'enzyme';
+import React from 'react';
+import { findByTestAttr } from '../test/testUtils';
 import App from './App';
 
-Enzyme.configure({adapter: new EnzymeAdapter()});
+const setup = (state = {}) => {
+  // TODO: apply state 
+  const wrapper = mount(<App />);
+  // add value to input box 
+  const inputBox = findByTestAttr(wrapper, 'input-form');
+  inputBox.simulate('change', { target: { value: 'train' } });
+  // simulate click on submit button      
+  const submitButton = findByTestAttr(wrapper, 'button-form');
+  submitButton.simulate('click', { preventDefault() { } });
+  return wrapper;
+}
 
-const setup = () => shallow(<App />);
+describe('no words in the list', () => {
+  test('testList has length of ONE', () => {
+    let wrapper = setup();
+    const testList = findByTestAttr(wrapper, 'todo-item');
+    expect(testList).toHaveLength(1);
+  });
+});
 
-test('renders without error', () => {
-  const wrapper = setup();
-  const app = findByTestAttr(wrapper, 'component-app');
-  expect(app.exists()).toBeTruthy();
+describe('ONE word on the list', () => {
+  test('testList has length of TWO', () => {
+    let wrapper = setup();
+    // add value to input box 
+    const inputBox = findByTestAttr(wrapper, 'input-form');
+    inputBox.simulate('change', { target: { value: 'train' } });
+    // simulate click on submit button      
+    const submitButton = findByTestAttr(wrapper, 'button-form');
+    submitButton.simulate('click', { preventDefault() { } });
+
+    // So now the list has two elements, one that added on the setup() 
+    // method and the other that added here.
+    const testList = findByTestAttr(wrapper, 'todo-item');
+    expect(testList).toHaveLength(2);
+  });
 });

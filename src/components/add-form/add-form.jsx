@@ -3,8 +3,7 @@ import { Col, Row, Button, Form, FormGroup, Input } from 'reactstrap';
 
 const AddForm = ({ addHandler }) => {
   // const [todo, setTodo]
-  const [todo, setTodo] = React.useState('');
-  const [testList, setListTest] = React.useState([]);
+  const [todo, setTodo] = React.useState('')
   return (
     <Form data-test='component-form' >
       <Row form>
@@ -26,12 +25,9 @@ const AddForm = ({ addHandler }) => {
           <button
             data-test='button-form'
             color="primary"
-            onClick={() => setListTest([...testList, "test"])}>Add New</button>
+            onClick={() => addHandler(todo)}>Add New</button>
         </Col>
       </Row>
-      {testList.map(test => (
-        <p data-test='test-list' key={Math.random()} >{test}</p>
-      ))}
     </Form>
   );
 }

@@ -9,10 +9,10 @@ class App extends Component {
   state = {
     todoList: [],
   }
-  addTodoHandler = () => {
+  addTodoHandler = (todoValue) => {
     const todoList = [...this.state.todoList];
     const todo = {
-      value: (Math.random() * 10).toFixed(0),
+      value: todoValue,
       id: uuid()
     };
     todoList.push(todo);
