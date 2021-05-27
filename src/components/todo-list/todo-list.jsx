@@ -3,7 +3,7 @@ import { Row, Col } from 'reactstrap';
 import PropTypes from 'prop-types';
 
 import './todo-list.css';
-import TestMaterialUI from '../Test_/test-material-ui';
+// import TestMaterialUI from '../Test_/test-material-ui';
 import ToDo from './todo/todo';
 
 const ToDoList = ({ todoList, removeTodoHandler }) => {
