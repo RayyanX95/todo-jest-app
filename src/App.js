@@ -5,6 +5,8 @@ import './App.sass';
 import AddForm from './components/add-form/add-form.jsx';
 import ToDoList from './components/todo-list/todo-list.jsx';
 
+import {getTodo} from './components/moxios-test/moxios-test';
+
 class App extends Component {
   state = {
     todoList: [],
@@ -21,6 +23,10 @@ class App extends Component {
   removeTodoHandler = (id) => {
     const todoList = this.state.todoList.filter(todo => todo.id != id);
     this.setState({ todoList });
+  }
+
+  componentDidMount() {
+    getTodo();
   }
 
   render() {
