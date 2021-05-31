@@ -12,7 +12,7 @@ import App from './App';
 jest.mock('./actions');
 
 // Since we have done this mock it is going to import this not actions/index.js
-// but from __mocks__/moxios-index.js 
+// but from __mocks__/index.js 
 import { getTodo as mockGetTodo } from './actions'
 
 const setup = (state = {}) => {
@@ -26,11 +26,20 @@ test('render without error', () => {
   expect(appComponent).toHaveLength(1);
 })
 
-describe('ge a todo', () => {
+describe('- ge a todo', () => {
+  beforeEach(() => {
+    // clear the mock calls from the previous tests
+    mockGetTodo.mockClear();
+  })
   test('getTodo on app mount', () => {
-
+    const wrapper = setup();
+    expect(mockGetTodo).toHaveBeenCalledTimes(1);
   });
   test('getTodo does NOT run on update', () => {
+    const wrapper = setup();
+    mockGetTodo.mockClear();
 
+    wrapper.setProps();
+    expect(mockGetTodo).toHaveBeenCalledTimes(0);
   });
 });
