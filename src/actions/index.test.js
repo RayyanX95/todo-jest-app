@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import moxios from 'moxios';
 
-import {getTodo} from './moxios-index';
+import {getTodo} from './index';
 
 
 describe('test moxios ', () => {

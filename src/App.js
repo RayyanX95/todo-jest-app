@@ -5,7 +5,7 @@ import './App.sass';
 import AddForm from './components/add-form/add-form.jsx';
 import ToDoList from './components/todo-list/todo-list.jsx';
 
-import {getTodo} from './components/moxios-test/moxios-test';
+import {getTodo} from './actions/index';
 
 class App extends Component {
   state = {
