@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme';
 import moxios from 'moxios';
 
-import {getTodo} from './index';
+import { getTodo, addTodo } from './index';
 
 
 describe('test moxios ', () => {
@@ -27,8 +27,26 @@ describe('test moxios ', () => {
     });
 
     return getTodo()
-    .then(todo => {
-      expect(todo.id).toBe(1);
-    })
+      .then(todo => {
+        expect(todo.id).toBe(1);
+      })
+  });
+})
+
+describe('add todo', () => {
+  test('test add todo action', () => {
+    const todo = {
+      value: "first todo",
+      id: "todo-id-1001"
+    }
+    const action = addTodo(todo);
+    const actionMatch = {
+      type: 'ADD_TODO',
+      payload: {
+        value: "first todo",
+        id: "todo-id-1001"
+      }
+    }
+    expect(action).toStrictEqual(actionMatch)
   });
 })
