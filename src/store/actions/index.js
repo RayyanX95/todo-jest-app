@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ADD_TODO = 'ADD_TODO';
+export const ADD_TODO = 'ADD_TODO';
 
 export const getTodo = () => {
   return axios.get('https://jsonplaceholder.typicode.com/posts/1')
