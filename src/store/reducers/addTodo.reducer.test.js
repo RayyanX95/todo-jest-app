@@ -9,6 +9,8 @@ test('when previous state is undefined, return []', () => {
 });
 
 test('return previous state when unknown action type', () => {
+  const reducer = addTodoReducer([], {type: 'unknown'});
+  expect(reducer.length).toBe(0);
 });
 
 test('return `true` for action type CORRECT_GUESS', () => {
