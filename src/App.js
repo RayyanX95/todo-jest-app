@@ -5,7 +5,7 @@ import './App.sass';
 import AddForm from './components/add-form/add-form.jsx';
 import ToDoList from './components/todo-list/todo-list.jsx';
 
-import {getTodo} from './actions/index';
+import { getTodo } from './store/actions';
 
 class App extends Component {
   state = {
@@ -32,8 +32,8 @@ class App extends Component {
   render() {
     return (
       <div data-test='component-app' className="App">
-        <AddForm addHandler={this.addTodoHandler}  />
-        <ToDoList todoList={this.state.todoList} removeTodoHandler={this.removeTodoHandler}/>
+        <AddForm addHandler={this.addTodoHandler} />
+        <ToDoList todoList={this.state.todoList} removeTodoHandler={this.removeTodoHandler} />
       </div>
     );
   }

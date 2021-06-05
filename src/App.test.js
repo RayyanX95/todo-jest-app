@@ -9,11 +9,11 @@ import App from './App';
 // I want you import from this __mocks__ module instead 
 // We setup __mocks__ module so it will do everything as usual except 
 // for get secret word 
-jest.mock('./actions');
+jest.mock('./store/actions');
 
 // Since we have done this mock it is going to import this not actions/index.js
 // but from __mocks__/index.js 
-import { getTodo as mockGetTodo } from './actions'
+import { getTodo as mockGetTodo } from './store/actions'
 
 const setup = (state = {}) => {
   const wrapper = mount(<App />);
