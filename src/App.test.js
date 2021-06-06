@@ -1,6 +1,8 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { findByTestAttr } from '../test/testUtils';
+import { Provider } from 'react-redux';
+
+import { findByTestAttr, storeFactory } from '../test/testUtils';
 import App from './App';
 
 // Activate global mock to make sure getTodo does not make network calls
@@ -15,8 +17,14 @@ jest.mock('./store/actions');
 // but from __mocks__/index.js 
 import { getTodo as mockGetTodo } from './store/actions'
 
-const setup = (state = {}) => {
-  const wrapper = mount(<App />);
+const INITIAL_STATE = {
+  todoList: [],
+  isDisabled: false,
+}
+
+const setup = (initialState = INITIAL_STATE) => {
+  const store = storeFactory(initialState);
+  const wrapper = mount(<Provider store={store} ><App /></Provider>);
   return wrapper;
 }
 
