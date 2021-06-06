@@ -21,7 +21,7 @@ class App extends Component {
     this.setState({ todoList });
   }
   removeTodoHandler = (id) => {
-    const todoList = this.state.todoList.filter(todo => todo.id != id);
+    const todoList = this.state.todoList.filter(todo => todo.id !== id);
     this.setState({ todoList });
   }
 

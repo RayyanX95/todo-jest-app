@@ -1,4 +1,4 @@
-import { addTodoReducer } from './addTodo.reducer';
+import addTodoReducer from './addTodo.reducer';
 import { ADD_TODO } from '../actions';
 
 test('when previous state is undefined, return []', () => {

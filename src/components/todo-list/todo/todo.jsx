@@ -1,5 +1,5 @@
 import React from 'react'
-import { Row, Col, Label } from 'reactstrap'
+import { Row, Label } from 'reactstrap'
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { withStyles } from '@material-ui/core/styles';
 import { grey, green } from '@material-ui/core/colors';

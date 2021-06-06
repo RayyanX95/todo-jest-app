@@ -1,11 +1,19 @@
 import { mount } from 'enzyme';
 import React from 'react';
-import { findByTestAttr } from '../test/testUtils';
+import { Provider } from 'react-redux';
+
+import { findByTestAttr, storeFactory} from '../test/testUtils';
 import App from './App';
 
-const setup = (state = {}) => {
+const INITIAL_STATE = {
+  todoList: [],
+  isDisabled: false,
+}
+
+const setup = (initialState = INITIAL_STATE) => {
   // TODO: apply state 
-  const wrapper = mount(<App />);
+  const store = storeFactory(initialState)
+  const wrapper = mount(<Provider store={store}><App /></Provider>);
   // add value to input box 
   const inputBox = findByTestAttr(wrapper, 'input-form');
   inputBox.simulate('change', { target: { value: 'train' } });

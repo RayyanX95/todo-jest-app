@@ -1,11 +1,15 @@
 import React from 'react';
-import { Col, Row, Button, Form, FormGroup, Input } from 'reactstrap';
+import { Col, Row, Form, FormGroup, } from 'reactstrap';
+import { useSelector } from 'react-redux';
 
 const AddForm = ({ addHandler }) => {
   // const [todo, setTodo]
-  const [todo, setTodo] = React.useState('')
+  const [todo, setTodo] = React.useState('');
+  const isEnabled = useSelector(state => state);
+  console.log("state: ", isEnabled);
+  // debugger;
   return (
-    <Form data-test='component-form' >
+    <form data-test='component-form' >
       <Row form>
         <Col md={12} >
           <h3 data-test="title-form" >Add your tasks</h3>
@@ -25,10 +29,12 @@ const AddForm = ({ addHandler }) => {
           <button
             data-test='button-form'
             color="primary"
-            onClick={() => addHandler(todo)}>Add New</button>
+            onClick={() => addHandler(todo)}
+            disabled={!isEnabled} >
+            Add New</button>
         </Col>
       </Row>
-    </Form>
+    </form>
   );
 }
 

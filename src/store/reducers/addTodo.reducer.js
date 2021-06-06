@@ -2,10 +2,10 @@ import { ADD_TODO, TOGGLE_BUTTON } from '../actions';
 
 const INITIAL_STATE = {
   todoList: [],
-  isEnabled: false,
+  isDisabled: false,
 }
 
-export const addTodoReducer = (state = INITIAL_STATE, action) => {
+const addTodoReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case ADD_TODO:
       return {
@@ -15,10 +15,12 @@ export const addTodoReducer = (state = INITIAL_STATE, action) => {
     case TOGGLE_BUTTON:
       return {
         ...state,
-        isEnabled: !state.isEnabled
+        isDisabled: !state.isDisabled
       }
 
     default:
       return state
   }
 }
+
+export default addTodoReducer ;

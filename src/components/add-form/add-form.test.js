@@ -1,9 +1,20 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
-import { findByTestAttr } from '../../../test/testUtils';
+import { Provider } from 'react-redux';
+
+import { findByTestAttr, storeFactory } from '../../../test/testUtils';
+// import rootReducer from '../../store/reducers';
 import AddForm from './add-form';
 
-const setup = () => shallow(<AddForm />);
+const INITIAL_STATE = {
+  todoList: [],
+  isDisabled: false,
+}
+
+const setup = (initialState = INITIAL_STATE) => {
+  const store = storeFactory(initialState);
+  return mount(<Provider store={store} ><AddForm /></Provider>)
+};
 
 describe('render without errors', () => {
   test('renders component without error', () => {
@@ -28,10 +39,10 @@ describe.skip('state controlled input field', () => {
     const mockSetTodo = jest.fn();
     React.useState = jest.fn(() => ['', mockSetTodo]);
 
-    const wrapper = setup();
+    const wrapper = setup({});
     const input = findByTestAttr(wrapper, 'input-form');
 
-    const mockEvent = {target: {value: 'New Todo'}};
+    const mockEvent = { target: { value: 'New Todo' } };
     input.simulate('change', mockEvent);
 
     expect(mockSetTodo).toBeCalledWith('New Todo')
