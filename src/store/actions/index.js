@@ -1,7 +1,14 @@
 import axios from 'axios';
 
+export const ADD_TODO_FROM_SERVER = 'ADD_TODO_FROM_SERVER';
 export const ADD_TODO = 'ADD_TODO';
 export const TOGGLE_BUTTON = 'TOGGLE_BUTTON';
+
+export const addTodoFromServer = () => {
+  return (dispatch, getState) => {
+
+  }
+}
 
 export const getTodo = () => {
   return axios.get('https://jsonplaceholder.typicode.com/posts/1')
