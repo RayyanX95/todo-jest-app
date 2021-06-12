@@ -16,14 +16,14 @@ describe('addTodoFromServer action dispatch', () => {
       store = storeFactory(INITIAL_STATE);
     })
     test('make the button disabled', () => {
-      store.dispatch(addTodoFromServer);
+      store.dispatch(addTodoFromServer());
       const expectedState = {
         todoList: [],
-        isDisabled: false,
+        isDisabled: true,
       }
 
       const newState = store.getState();
-      console.log("------------- ---newState: ", newState);
+      console.log("--------newState: ", newState);
       expect(newState.addTodoReducer).toEqual(expectedState)
     });
   });
