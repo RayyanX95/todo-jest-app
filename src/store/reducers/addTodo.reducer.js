@@ -6,6 +6,7 @@ const INITIAL_STATE = {
 }
 
 const addTodoReducer = (state = INITIAL_STATE, action) => {
+  console.log("Reducer - action: ",  action)
   switch (action.type) {
     case ADD_TODO:
       return {

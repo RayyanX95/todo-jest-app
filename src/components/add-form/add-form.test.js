@@ -7,8 +7,10 @@ import { findByTestAttr, storeFactory } from '../../../test/testUtils';
 import AddForm from './add-form';
 
 const INITIAL_STATE = {
-  todoList: [],
-  isDisabled: false,
+  addTodoReducer: {
+    todoList: [],
+    isDisabled: false,
+  }
 }
 
 const setup = (initialState = INITIAL_STATE) => {

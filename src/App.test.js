@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 
 import { findByTestAttr, storeFactory } from '../test/testUtils';
 import App from './App';
+import { getTodo as mockGetTodo } from './store/actions'
 
 // Activate global mock to make sure getTodo does not make network calls
 
@@ -15,11 +16,12 @@ jest.mock('./store/actions');
 
 // Since we have done this mock it is going to import this not actions/index.js
 // but from __mocks__/index.js 
-import { getTodo as mockGetTodo } from './store/actions'
 
 const INITIAL_STATE = {
-  todoList: [],
-  isDisabled: false,
+  addTodoReducer: {
+    todoList: [],
+    isDisabled: false,
+  }
 }
 
 const setup = (initialState = INITIAL_STATE) => {

@@ -6,7 +6,7 @@ const AddForm = ({ addHandler }) => {
   // const [todo, setTodo]
   const [todo, setTodo] = React.useState('');
   const isEnabled = useSelector(state => state);
-  console.log("state: ", isEnabled);
+  // console.log("state: ", isEnabled);
   // debugger;
   return (
     <form data-test='component-form' >

@@ -6,8 +6,11 @@ export const TOGGLE_BUTTON = 'TOGGLE_BUTTON';
 
 export const addTodoFromServer = () => {
   return (dispatch, getState) => {
-
+    dispatch({
+      type: TOGGLE_BUTTON,
+    })
   }
+
 }
 
 export const getTodo = () => {
